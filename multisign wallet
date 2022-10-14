@@ -84,7 +84,7 @@ contract MultiSigWallet {
         _;
     }
 
-    /// @dev Fallback function allows to deposit ether.
+    
     function()
         payable
     {
@@ -108,8 +108,7 @@ contract MultiSigWallet {
         required = _required;
     }
 
-    /// @dev Allows to add a new owner. Transaction has to be sent by wallet.
-    /// @param owner Address of new owner.
+   
     function addOwner(address owner)
         public
         onlyWallet
@@ -222,10 +221,6 @@ contract MultiSigWallet {
         }
     }
 
-    /*
-     * Internal functions
-     */
-   
     function addTransaction(address destination, uint value, bytes data)
         internal
         notNull(destination)
@@ -324,10 +319,6 @@ contract MultiSigWalletWithDailyLimit is MultiSigWallet {
     uint public lastDay;
     uint public spentToday;
 
-    /*
-     * Public functions
-     */
-   
     function MultiSigWalletWithDailyLimit(address[] _owners, uint _required, uint _dailyLimit)
         public
         MultiSigWallet(_owners, _required)
@@ -366,9 +357,7 @@ contract MultiSigWalletWithDailyLimit is MultiSigWallet {
         }
     }
 
-    /*
-     * Internal functions
-     */
+   
     
     function isUnderLimit(uint amount)
         internal
@@ -383,9 +372,7 @@ contract MultiSigWalletWithDailyLimit is MultiSigWallet {
         return true;
     }
 
-    /*
-     * Web3 call functions
-     */
+   
     
     function calcMaxWithdraw()
         public
